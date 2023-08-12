@@ -1,0 +1,36 @@
+<%- include("header") -%>
+
+<div class="box" id="heading">
+    <h1>
+        <%= listTitle %>
+    </h1>
+</div>
+
+<div class="box" id="dir">
+    <%    var route  %>
+    <%    if(dir === "/work"){    %>
+    <%       route = "Work"       %>
+    <%    }else  route = "Home"   %>   
+    
+    <a href=<%= dir %> > Go to <%= route %> </a>
+    
+</div>
+
+<div class="box">
+    <% for(var i=0; i<newListItems.length; i++){ %>
+        <div class="item">
+            <input type="checkbox">
+            <p>
+                <%= newListItems[i] %>
+            </p>
+        </div>
+        <% } %>
+
+            <!-- for sending data to backend -->
+            <form class="item" action="/" method="post">
+                <input type="text" name="newItem" placeholder="Add New Item" autocomplete="off">
+                <button type="submit" name="list" value="<%= listTitle %>">+</button>
+            </form>
+</div>
+
+<%- include("footer") -%>
